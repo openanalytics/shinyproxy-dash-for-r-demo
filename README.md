@@ -1,4 +1,4 @@
-# ShinyProxy Dash for R Demo Image
+# Running Dash for R apps inside ShinyProxy
 
 [Screenshots](#screenshots)
 
@@ -21,22 +21,20 @@ or using the following code and setting the `HOST` environment variable to
 app$run_server()
 ```
 
-## Demo application
+## Building the Docker image
 
 To pull the image made in this repository from Docker Hub, use
 
-```
+```bash
 sudo docker pull openanalytics/shinyproxy-dash-for-r-demo
 ```
 
 The relevant Docker Hub repository can be found at
 [https://hub.docker.com/r/openanalytics/shinyproxy-dash-for-r-demo](https://hub.docker.com/r/openanalytics/shinyproxy-dash-for-r-demo).
 
-
 To build the image from the Dockerfile, navigate into the root directory of this repository and run
 
-
-```
+```bash
 sudo docker build -t openanalytics/shinyproxy-dash-for-r-demo .
 ```
 
@@ -50,12 +48,11 @@ for a complete file), containing:
   container-image: ledfan/shinyproxy-dash-r
   port: 8050
   container-env:
-    DASH_REQUESTS_PATHNAME_PREFIX: "#{proxySpec.containerSpecs[0].env.get('SHINYPROXY_PUBLIC_PATH')}"
+    DASH_REQUESTS_PATHNAME_PREFIX: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
 ```
 
 ## Screenshots
 
 ![DashR application in ShinyProxy](.github/screenshots/dashr.png)
-
 
 **(c) Copyright Open Analytics NV, 2021.**

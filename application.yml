@@ -21,7 +21,7 @@ proxy:
     container-image: ledfan/shinyproxy-dash-r
     port: 8050
     container-env:
-      DASH_REQUESTS_PATHNAME_PREFIX: "#{proxySpec.containerSpecs[0].env.get('SHINYPROXY_PUBLIC_PATH')}"
+      DASH_REQUESTS_PATHNAME_PREFIX: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
 logging:
   file:
     name: shinyproxy.log
