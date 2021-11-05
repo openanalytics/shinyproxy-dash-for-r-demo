@@ -48,7 +48,10 @@ for a complete file), containing:
   container-image: ledfan/shinyproxy-dash-r
   port: 8050
   container-env:
+    # Use the following line when using ShinyProxy 2.6.0 or later
     DASH_REQUESTS_PATHNAME_PREFIX: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
+    # Use the following line when using ShinyProxy 2.5.0
+    # DASH_REQUESTS_PATHNAME_PREFIX: "#{proxySpec.containerSpecs[0].env.get('SHINYPROXY_PUBLIC_PATH')}"
 ```
 
 ## Screenshots
